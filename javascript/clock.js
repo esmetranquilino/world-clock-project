@@ -1,33 +1,28 @@
 function updateCityTime() {
     let losAngeles = document.querySelector("#los-angeles");
-    if (losAngeles) {
-        let losAngelesDate = losAngeles.querySelector(".date");
-        let currentDate = moment().format("LL");
-        losAngelesDate.innerHTML = currentDate;
+    getCityInfo(losAngeles, "America/Los_Angeles");
 
-        let losAngelesTime = losAngeles.querySelector(".time");
-        let currentTime = moment()
-           .tz("America/Los_Angeles")
-           .format("hh:mm:ss");
-        let amPm = moment().format("A");
-        losAngelesTime.innerHTML = `${currentTime} <small>${amPm}</small>`;
-    }
-    
-
-  //sydney
     let sydney = document.querySelector("#sydney");
-    if (sydney) {
-        let sydneyDate = sydney.querySelector(".date");
-        let todayDate = moment().format("LL");
-        sydneyDate.innerHTML = todayDate;
+    getCityInfo(sydney, "Australia/Sydney");
 
-        let sydneyTime = sydney.querySelector(".time");
-        let todayTime = moment().tz("Australia/Sydney").format("hh:mm:ss");
-        let clockPeriod = moment().format("A");
-        sydneyTime.innerHTML = `${todayTime} <small>${clockPeriod}</small>`;
-    }
- 
-}
+    let mexicoCity = document.querySelector("#mex");
+    getCityInfo(mexicoCity, "America/Mexico_City");
+
+};
+
+function getCityInfo (city, timeZone) {
+    let cityDate = city.querySelector(".date");
+    let currentDate = moment().format("LL");
+    cityDate.innerHTML = currentDate;
+
+    let cityTime = city.querySelector(".time");
+    let currentTime = moment().tz(timeZone).format("hh:mm:ss");
+    let amPm = moment().format("A");
+    cityTime.innerHTML = `${currentTime} <small>${amPm}</small>`;
+
+};
+
+
 
 //multiple cities
 
